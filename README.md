@@ -1,4 +1,7 @@
-# Voron Switchwire
+# Voron Theseus 3 V3
+
+Modifications to accomodate Creality's Ender 3 V3 components.  
+
 **[CLICK HERE TO DOWNLOAD](https://voron.zip/done/VSW.zip)**
 
 The above link includes the stealthburner toolhead files which are compatible with several of the printers in the Voron lineup. 
