@@ -21,6 +21,8 @@ Obviously.
 ### Rear Left Grill
 Front Grill accomodated for a [large power inlet with integrated EMI filter](https://www.emcdorexs.com/product/dbi5.html).  
 
+<img src="https://github.com/marecl/Theseus3V3/blob/master/STL%203V3/pictures/3V3_grill_rear_left_integrated_filter_front.jpeg" alt="front" style="width:40%; height=auto;"><img src="https://github.com/marecl/Theseus3V3/blob/master/STL%203V3/pictures/3V3_grill_rear_left_integrated_filter_back.jpeg" alt="back" style="width:40%; height=auto;">
+
 Used hardware:
 1. 4x M3 threaded brass insert
 2. 2x M3x8 FHCS (ISO 10642 / DIN 7991)
