@@ -1,8 +1,10 @@
-# Harden Ender 3 V3
+# Hardening Theseus 3V3
+
+Well, it's Ender 3 V3. But from this point on we're swimming with Orcas.  
 
 Creality did a great job at being sloppy with their system.  
 The "root account" is the **only** account on the printer. It runs **everything**.  
-And the printer is constantly connected to API servers _somewhere_. With hard-coded default password and multiple services listening on the web. Totally not sus.  
+And the printer is constantly connected to API servers _somewhere_. With hard-coded default password and multiple services listening on the web. Probably with default ssh keys too. Totally not sus.  
 
 Initially I just wanted to trim Creality services, but with how system is organized it will need a bit more work.
 
@@ -26,7 +28,7 @@ This *should* work on firmware `1.2.3.28`.
 
 ### Servers
 
-There's some unused services that don't affect printing.  
+There are some unused services that don't affect printing.  
 
 `vi /etc/init.d/S99start_app`
 
@@ -66,7 +68,7 @@ Logs: Wifi connection status. Nothing exciting.
 Plays UI sounds. Through nonexistent speaker.
 
 #### Remaining servers
-No idea. Prints just file without those.  
+No idea. Prints just fine without them.  
 
 ### AI
 

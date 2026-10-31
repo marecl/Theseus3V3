@@ -16,10 +16,12 @@ The official release of the Voron Switchwire 3d printer.  You can find the BOM a
 
 ## Software
 
-It feels like Creality really needed to push the software out _fast_. They promised Creality OS in E3V3 marketing, but they're not planning on releasing it. Don't take my word for it, ask them.  
+**Configuration files are WIP.**
+
+It feels like Creality really needed to push the software out _fast_. They promised Creality OS in E3V3 marketing, but they're not planning on releasing it. Don't take my word for it, ask them yourself.  
 No wonder, it's a disaster. Either that or I'm detached from what embedded software should look like.  
 
-More information can be found in `Hardening/README.md`.
+More information can be found in [the hardening guide](https://github.com/marecl/Theseus3V3/tree/master/Hardening).
 
 ## Custom parts
 
