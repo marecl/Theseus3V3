@@ -70,6 +70,20 @@ Plays UI sounds. Through nonexistent speaker.
 #### Remaining servers
 No idea. Prints just fine without them.  
 
+### Logger
+`log_main` process runs all the time and calls **many** reverse IP lookup domains.  
+I think this compresses and uploads logs to Creality servers, but I didn't investigate for long.  
+Well, uploading logs requires connecting to Creality account and I don't want to do that. Besides, who knows what else it collects. Or when it uploads. Good riddance.  
+Startup is triggered by any server via `/usr/bin/report.sh`.  
+
+I don't know if moving `report.sh` will break the system, but renaming the binary sure won't.  
+
+```
+# mv /usr/bin/report.sh /usr/bin/report.sh.old
+mv /usr/bin/log_main /usr/bin/log_main.old
+killall log_main
+```
+
 ### AI
 
 Creality says this is "in optimization", which in their terms really means "half-assed enough to ship". Latest firmware update is dated at April 2025 so... yeah. Dream on.  

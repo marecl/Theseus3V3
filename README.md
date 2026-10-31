@@ -38,13 +38,16 @@ Used hardware:
 
 M3x6 FHCS may not thread fully into the insert.
 
-### (WIP) Front Right Grill
-Front Side Grill adapted for stock Ender 3V3 display (with case).  
-Includes mounting extrusion and slit for LCD cable.
+### Front Left Grill
+Stock grill. Copied only because original file name requested 2 pieces, while this project requires just 1.
 
 ### (WIP) Front Middle Grill
 Front Middle Grill adapted for stock Ender 3V3 display (with case).  
 Includes partial slit for LCD cable.
+
+### (WIP) Front Right Grill
+Front Side Grill adapted for stock Ender 3V3 display (with case).  
+Includes mounting extrusion and slit for LCD cable.
 
 ### (WIP) Bed Drill Guide
 Stock E3V3 bed doesn't have enough meat to properly mount the anchor. Yet to level-up from brief look at it.
