@@ -1,0 +1,46 @@
+### Stock
+127.0.0.1       localhost
+127.0.1.1       creality
+
+### Referenced by *-server applications
+127.0.0.1   creality.com
+127.0.0.1   creality.cn
+127.0.0.1   crealitycloud.com
+127.0.0.1   crealitycloud.cn
+127.0.0.1   api.crealitycloud.com
+127.0.0.1   api.crealitycloud.cn
+127.0.0.1   mqtt.crealitycloud.com
+127.0.0.1   mqtt.crealitycloud.cn
+127.0.0.1   admin-pre.crealitycloud.com
+127.0.0.1   admin-pre.crealitycloud.cn
+127.0.0.1   api-dev.crealitycloud.com
+127.0.0.1   api-dev.crealitycloud.cn
+127.0.0.1   pre-tb-iot.crealitycloud.com
+127.0.0.1   aliyuncs.com
+127.0.0.1   oss-cn-hangzhou.aliyuncs.com
+127.0.0.1   oss-us-east-1.aliyuncs.com
+127.0.0.1   120.55.101.240
+127.0.0.1   120.27.143.31
+127.0.0.1   47.114.48.45
+127.0.0.1   172.29.99.188   # Ports 1883, 4020
+
+### Referenced by web ui
+# /usr/share/frontend/static/js
+127.0.0.1   at.alicdn.com
+
+### Scavenged from DNS request history
+# Public IP lookup services
+127.0.0.1   icanhazip.com
+127.0.0.1   ipinfo.io
+127.0.0.1   ifconfig.me
+127.0.0.1   ipify.org
+127.0.0.1   api.ipify.org
+127.0.0.1   ipecho.net
+127.0.0.1   ident.me
+127.0.0.1   ip.42.pl
+# No idea what this is, part of Alibaba Cloud
+127.0.0.1   c-smart.cxswyjy.com
+
+### Others
+# Repo for Katapult. Waybackmachine shows 404 ever since Dec 2022
+127.0.0.1   arksine.github.io
