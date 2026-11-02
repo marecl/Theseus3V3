@@ -24,6 +24,19 @@ A word of comfort: if you brick your printer, you can easily unbrick it with [th
 
 This *should* work on firmware `1.2.3.28`.
 
+## (WIP) Performance
+This guide will lead to disabling **a lot of** services. While the CPU isn't the worst for the usecase, freeing up some extra resources will sure help.  
+
+The rest is to be measured correctly.
+
+Preliminary results after 30min of idle:
+
+| what  | before |     after    |
+|-------|--------|--------------|
+|tasks  |        |           26 |
+|CPU avg|        | 0.9 0.14 0.9 |
+|memory |     76 |           59 |
+
 ## Cut away the bloat
 
 ### Servers
@@ -121,15 +134,15 @@ Device is also very persistent in setting up time from NTP servers, pinging ever
 
 Those are good enough to start looking for URLs:
 ```
-strings [FILE] | grep -Eo ".{0,50}www\.{0,50}"
-strings [FILE] | grep -Eo ".{0,50}\.com.{0,50}"
-strings [FILE] | grep -Eo ".{0,50}\.cn.{0,50}"
-strings [FILE] | grep -Eo ".{0,50}\.io.{0,50}"
-strings [FILE] | grep -Eo ".{0,50}\.org.{0,50}"
-strings [FILE] | grep -Eo ".{0,50}\.net.{0,50}"
-strings [FILE] | grep -Eo "http\:\/\/.{0,50}"
-strings [FILE] | grep -Eo "https\:\/\/.{0,50}"
-strings [FILE] | grep -Eo ".{0,10}([0-9]{1,3}[\.]){3}[0-9]{1,3}.{0,50}"
+strings device_manager | grep -Eo ".{0,50}www\.{0,50}"
+strings device_manager | grep -Eo ".{0,50}\.com.{0,50}"
+strings device_manager | grep -Eo ".{0,50}\.cn.{0,50}"
+strings device_manager | grep -Eo ".{0,50}\.io.{0,50}"
+strings device_manager | grep -Eo ".{0,50}\.org.{0,50}"
+strings device_manager | grep -Eo ".{0,50}\.net.{0,50}"
+strings device_manager | grep -Eo "http\:\/\/.{0,50}"
+strings device_manager | grep -Eo "https\:\/\/.{0,50}"
+strings device_manager | grep -Eo ".{0,10}([0-9]{1,3}[\.]){3}[0-9]{1,3}.{0,50}"
 ```
 
 ### Kernel modules
@@ -172,10 +185,11 @@ Change `log_level` to desired value:
 * `LOG_DEFAULT` = 0
 * `LOG_DEBUG` = 1 (_set by default_)
 * `LOG_INFO` = 2
-* `LOG_WARNING` = 3 (_recommended_)
-* `LOG_ERROR` = 4
+* `LOG_WARNING` = 3
+* `LOG_ERROR` = 4 (_recommended_)
 
-Run `/etc/init.d/S99start_app restart` to apply changes.
+Not that those have any value to the user.  
+Run `/etc/init.d/S99start_app restart` to apply changes.  
 
 ## Updates
 
@@ -186,7 +200,7 @@ I recommend the following:
 2. [Install] -> Updated Fluidd
 3. [Customize] -> Remove Creality Web Interface
 
-## Users and permissions
+## (WIP) Users and permissions
 
 **Everything** runs as root on E3V3, including:
 1. Kernel 4.4.94
@@ -196,7 +210,7 @@ I recommend the following:
 5. <span style="color:red">Moonraker</span> (tbd)
 6. <span style="color:red">Fluidd</span> (tbd)
 7. <span style="color:red">Klipper</span> v0.11.0  
-For tinkerers: Devices flashed with v0.12.0 should work. Didn't test that a lot yet.
+For tinkerers: Devices flashed with v0.12.0 should work. Didn't test that in depth yet.
 
 Outdated programs running as root while continuously connected to API server... Not looking good.
 
@@ -225,6 +239,6 @@ Common paths are:
 
 ## Easter eggs
 
-`HUMBNAIL` - a typo which is _everywhere_.
+`HUMBNAIL` - a typo which is _everywhere_. Not just init scripts. I mean directory names, macros, gcodes, _EVERYWHERE_.
 
 Leftover bootlogo of Piocreat IPX2 in system version [1.2.3.21](https://github.com/Guilouz/Creality-Ender3-V3-Extracted-Firmwares/blob/main/Firmware/etc/boot-display/pic_00.jpg)

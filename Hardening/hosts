@@ -16,6 +16,7 @@
 127.0.0.1   api-dev.crealitycloud.com
 127.0.0.1   api-dev.crealitycloud.cn
 127.0.0.1   pre-tb-iot.crealitycloud.com
+127.0.0.1   pre-tb-iot.crealitycloud.cn
 127.0.0.1   aliyuncs.com
 127.0.0.1   oss-cn-hangzhou.aliyuncs.com
 127.0.0.1   oss-us-east-1.aliyuncs.com
@@ -25,8 +26,8 @@
 127.0.0.1   172.29.99.188   # Port 1883, 4020
 127.0.0.1   172.23.89.142   # Port 9999
 127.0.0.1   172.23.88.143
-127.0.0.1   172.23.88.14    # Not NULL-terminated so might be invalid
-127.0.0.1   172.23.88.1     # Not NULL-terminated so might be invalid
+127.0.0.1   172.23.88.14    # One above is not NULL-terminated so might be invalid
+127.0.0.1   172.23.88.1     # One above is not NULL-terminated so might be invalid
 # No idea what this is, part of Alibaba Cloud
 127.0.0.1   c-smart.cxswyjy.com
 127.0.0.1   c-smart-cn-local.cxswyjy.com
