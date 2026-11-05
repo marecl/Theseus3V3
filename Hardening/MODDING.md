@@ -13,6 +13,69 @@ Theoretically, the only requirement is an Ethernet jack with builtin transformer
 I thought this was a lost cause, that I'd need to bootleg obscure kernel modules, but there is hope.  
 `ifplugd` runs in the background, bound to `eth0`.  
 
+### LCD
+
+ST7701, 480x800, SPI
+Pin mapping:  
+* CS: PA02
+* POWER_EN: PC21
+* RST: PB29
+* SCL: PC27
+* SDA: PC28
+* SDO: PB16
+
+### Touchscreen
+
+This printer uses 2 touch modules: GT9xx/TLSC6x.  
+Drivers for both are loaded and they have the same set of parameters.
+
+Pin mapping:  
+* gtp_i2c_bus_num: 4
+* gtp_irq_gpio: PA03
+* gtp_max_touch_number: 2
+* gtp_power_on_gpio: -1
+* gtp_regulator_name: -1
+* gtp_reset_gpio: PA00
+
+Parameters:  
+* x_coords_flip: 0
+* x_coords_max: 480
+* x_coords_min: 0
+* x_y_coords_exchange: 0
+* y_coords_flip: 0
+* y_coords_max: 800
+* y_coords_min: 0
+
+### Backlight
+
+Info:  
+* backlight_dev_name: backlight_pwm0
+* default_brightness: 300
+* max_brightness: 300
+* power_gpio_vaild_level: 1
+* pwm_active_level: 1
+* pwm_freq: 50000
+
+
+Pin mapping:  
+* power_gpio: PC22
+* pwm_gpio: PC00
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Software
 
 Klipper is GNU-GPL licensed. I can look where I want.  
@@ -43,3 +106,41 @@ Latest fit: [1ff0a5494aba59cffb3a912c82e474aa5eebdd03](https://github.com/Klippe
 I'll drop a full diff sometime, I think.  
 There are some minor modifications like added telemetry, verbose errors etc.  
 However many devices have been dropped, like support for SPI sensors, HD44780 display and some TMC drivers. Too bad because I really wanted to add some more stuff to the printer, now I have to tinker with it even more.
+
+### Devices
+
+Slave devices for klipper.  
+Creality uses GigaDevices ARM ICs, which are a drop-in replacement for STM32.  
+Applied GD32F303 is an equivalent of STM32F101. Manufacturer claims nearly perfect software compatibility, hardware needs to be verified.  
+
+All 3 have different binaries so I'm a bit skeptical whether I can get away with flashing latest Klipper.  
+
+#### CPU
+
+IC: Ingenic X2000
+Cores: 2@1.2GHz, 1@240MHz
+ISA: mips1, mips2, mips32r2
+
+#### MCU
+
+IC: GigaDevices GD32F303XE
+Clock: 120MHz
+Crystal: ?
+Bootloader offset: ?
+Communication: USART ?
+
+#### Nozzle MCU
+
+IC: GigaDevices GD32F303XB
+Clock: 120MHz
+Crystal: ?
+Bootloader offset: ?
+Communication: USART ?
+
+#### Leveling MCU
+
+IC: GigaDevices GD32F303XB
+Clock: 120MHz
+Crystal: ?
+Bootloader offset: ?
+Communication: USART ?

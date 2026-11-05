@@ -78,7 +78,7 @@ Logs: Wifi connection status. Nothing exciting.
 ----
 
 #### audio-server
-Plays UI sounds. Through nonexistent speaker.
+Plays UI sounds. Through nonexistent speaker. Kernel driver is always loaded tho, I wonder if I can blacklist it.
 
 #### Remaining servers
 No idea. Prints just fine without them.  
