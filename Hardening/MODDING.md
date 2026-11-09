@@ -2,14 +2,6 @@
 
 ## Hardware 
 
-### (WIP) UART
-Every board has UART port. This one must too, somewhere.
-
-### Ethernet
-Ender 3 V3 mainboard has an unpopulated footprint for an Ethernet jack.  
-Brief inspection showed no vital components missing.  
-Theoretically, the only requirement is an Ethernet jack with builtin transformer and LEDs.
-
 I thought this was a lost cause, that I'd need to bootleg obscure kernel modules, but there is hope.  
 `ifplugd` runs in the background, bound to `eth0`.  
 
@@ -56,24 +48,9 @@ Info:
 * pwm_active_level: 1
 * pwm_freq: 50000
 
-
 Pin mapping:  
 * power_gpio: PC22
 * pwm_gpio: PC00
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ## Software
@@ -117,15 +94,16 @@ All 3 have different binaries so I'm a bit skeptical whether I can get away with
 
 #### CPU
 
-IC: Ingenic X2000
+IC: Ingenic X2000E
 Cores: 2@1.2GHz, 1@240MHz
+Crystal: 24MHz
 ISA: mips1, mips2, mips32r2
 
 #### MCU
 
 IC: GigaDevices GD32F303XE
 Clock: 120MHz
-Crystal: ?
+Crystal: 8MHz
 Bootloader offset: ?
 Communication: USART ?
 
@@ -133,7 +111,7 @@ Communication: USART ?
 
 IC: GigaDevices GD32F303XB
 Clock: 120MHz
-Crystal: ?
+Crystal: 8MHz
 Bootloader offset: ?
 Communication: USART ?
 
@@ -141,6 +119,71 @@ Communication: USART ?
 
 IC: GigaDevices GD32F303XB
 Clock: 120MHz
-Crystal: ?
+Crystal: 8MHz
 Bootloader offset: ?
 Communication: USART ?
+
+
+## Unpopulated headers
+
+Worth checking out for upgrades.
+
+### Unplugged
+
+Mainboard
+-
+| symbol | label | function | type | pins | remarks |  
+| ------ | ----- | -------- | ---- | ---- | ------- |  
+| `J7/J8` |  | USB | JST-PH 2.00mm 4pin | 1. 5V<br>2. D-<br>3. D+<br>4. GND | Generic USB connector |  
+| `J9/J10` |  | USB | JST-PH 2.00mm 4pin | 1. 5V<br>2. D-<br>3. D+<br>4. GND | Generic USB connector |  
+| `J38?` | `LED` | ? Static LED lighting | JST-XH 2.54 2pin | 1. -<br> 2. + (24V) |  | 
+| `J39` | `FAN` | Fan | JST B02P-NV | 1. + (24V)<br>2. - | NCEPOWER NCEP40P80K P-MOSFET, circuitry missing protective diode |  
+| `J43?` | `FAN2` | Fan 2 | JST-XH 2.54 2pin | 1. -<br> 2. + (24V) |  |  
+| `J44?` | `FAN1` | Fan 1 | JST-XH 2.54 2pin | 1. -<br> 2. + (24V) |  |  
+| `J53` | `ADC-HEAT` | ? Chamber temperature | JST-XH 2.54 2pin | 1. GND<br>2. ADC |  |  
+| `J55` |  | USB - LiDAR | JST-XH 2.54 4pin | ? | Generic USB connector |  
+
+Bed
+-
+| symbol | label | function | type | pins | remarks |  
+| ------ | ----- | -------- | ---- | ---- | ------- |  
+
+Nozzle
+-
+| symbol | label | function | type | pins | remarks |  
+| ------ | ----- | -------- | ---- | ---- | ------- |  
+
+
+### Unsoldered
+
+Mainboard
+-
+| symbol | label | function | type | pins | remarks |  
+| ------ | ----- | -------- | ---- | ---- | ------- |  
+| `J1` |  | Serial | Header 2.54mm 3pin | 1. GND<br>2. RX<br>3. TX |  Could be 5V tolerant
+| `J5` |  | USB | JST-PH 2.00mm 4pin | 1. 5V<br>2. D-<br>3. D+<br>4. GND | microUSB breakout |  
+| `J26` | `TOUCH` | BLTouch | Molex PicoBlade 5pin | 1. OUT<br>2. GND<br>3. IN<br>4. 5V<br>5. GND |  |  
+| `J30` | `E` | Extruder | JST-XH 2.54 4pin |  |  
+| `J35` | `Y-` | Y Limit Switch | JST-PH 2.00mm 3pin | 1. V<br>2. G<br>3. S |  |  
+| `J45` |  | Ethernet |  |  | With LED and transformer. To be tested. |  
+| `J48` |  | ? SPI0 | JST-PH 2.00mm 6pin | 1. 3V3<br>2. MISO<br>3. MOSI<br>4. CLK<br>5. CS<br>6. GND | No filter circuit, no kernel module loaded for SPI |  
+| `J49` |  | ? SPI1 | JST-PH 2.00mm 6pin | 1. 3V3<br>2. MISO<br>3. MOSI<br>4. CLK<br>5. CS1<br>6. GND | No filter circuit, no kernel module loaded for SPI |  
+| `J52` | `HEAT` | ? Heated chamber | JST B02P-NV | 1. + (24V)<br>2. - | NCEPOWER NCEP40P80K P-MOSFET, circuitry missing protective diode. Probably the same as for bed: SS54 SMA/SOD128 (40V, 5A)|  
+| `J56` | `OPEN1` | ? Switch | JST-PH 2.00mm 3pin  | 1. V<br>2. G<br>3. S | Missing components |  
+| `J57` | `OPEN2` | ? Switch | JST-PH 2.00mm 3pin | 1. V<br>2. G<br>3. S | Missing components |  
+| `J58` | `RESERVE` | ? Switch | JST-PH 2.00mm 3pin | 1. V<br>2. G<br>3. S | Missing components |  
+| `J59` | `RS485` | RS485 interface | JST-XH 2.54 3pin | 1. A<br>2. B<br>3. GND | Transceiver circuitry missing |  
+| `J60` | `AC_BED` | ? | JST-PH 2.00mm 4pin | 1. 5V<br>2. GND<br>3. CTR<br>4. STANDBY |  |  
+| `J61?` | `LASER` | Laser | JST-XH 2.54 3pin | 1. 24V<br>2. GND<br>3. LASER |  
+| `SPK` |  | Speaker | JST-XH 1.25 2pin | 1. SPKP<br>2. SPKN |  |  
+| `M1` |  | Mic | D6mm, 2mm pitch | 1. MICN<br>2. MICP |  |  
+
+Nozzle
+-
+| symbol | label | function | type | pins | remarks |  
+| ------ | ----- | -------- | ---- | ---- | ------- |  
+
+Bed
+-
+| symbol | label | function | type | pins | remarks |  
+| ------ | ----- | -------- | ---- | ---- | ------- |  

@@ -29,6 +29,31 @@ More information can be found in [the hardening guide](https://github.com/marecl
 
 Obviously.
 
+Directories are organized in the following way:  
+* Custom - Made from scratch to fit the hardware
+* Modified - Modified Voron models
+* Native - Parts modeled from original hardware
+* Primitives - Generalized Voron models
+* Pictures
+
+### Custom
+* LCD Case Rear
+* (WIP) Y Carriage Drill Guide
+
+### Modified
+* Rear Left Grill (power inlet with integrated filter)
+* (WIP) Front Middle Grill
+* (WIP) Y Bed Anchor
+
+### Native
+* LCD Case Front
+* USB Port PCB
+* (WIP) Bed Frame
+
+### Primitives
+* Grill Front (unmodified)
+* Grill Rear L/R - cleaned up side grill
+
 ### Rear Side Grill
 Cleaned up rear side grill.  
 They differ from front grills which bugs me, but 
