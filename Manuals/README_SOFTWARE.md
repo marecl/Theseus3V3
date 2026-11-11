@@ -119,6 +119,35 @@ Didn't verify beforehand, but most likely this one was making multiple attempts 
 mv /etc/init.d/S97webrtc /etc/init.d/disabled.S97webrtc
 ```
 
+### Ethernet
+
+Ethernet is only available on K1 Max. 3V3 doesn't have driver circuitry soldered in, but `ifplugd` daemon is running.
+
+```
+/etc/init.d/S45ifplugd stop
+mv /etc/init.d/S45ifplugd /etc/init.d/disabled.S45ifplugd
+```
+
+### mDNS
+
+If you have configured DHCP nameserver or just connect with IP, you can disable mDNS. This will break compatibility with Creality slicer.  
+
+```
+/etc/init.d/S99mdns stop
+mv /etc/init.d/S99mdns /etc/init.d/disabled.S99mdns
+```
+
+### Hostname
+
+Default hostname is product name with appended MAC.  
+Disabling this sets default hostname as `creality`.  
+You can paste custom `S01hostname` init script to set it to one defined in `/etc/hostname`.
+
+```
+/etc/init.d/S01hostname restart
+mv /etc/init.d/S01hostname /etc/init.d/disabled.S01hostname
+```
+
 ### Network activity
 
 There is quite a lot of activity going on, even if not logged in to the cloud.  
@@ -200,45 +229,10 @@ I recommend the following:
 2. [Install] -> Updated Fluidd
 3. [Customize] -> Remove Creality Web Interface
 
-## (WIP) Users and permissions
-
-**Everything** runs as root on E3V3, including:
-1. Kernel 4.4.94
-2. Dropbear SSH v2019.78
-3. <span style="color:red">nginx</span> 1.17.7
-4. <span style="color:red">python</span> 3.8.2
-5. <span style="color:red">Moonraker</span> (tbd)
-6. <span style="color:red">Fluidd</span> (tbd)
-7. <span style="color:red">Klipper</span> v0.11.0  
-For tinkerers: Devices flashed with v0.12.0 should work. Didn't test that in depth yet.
-
-Outdated programs running as root while continuously connected to API server... Not looking good.
-
-### Separate users
-[create user for klipper, moonraker, creality apps]
-
-### Set user/group permissions
-[minimal for each, groups, udev]
-
-### Set file permissions
-[as above]
-
-### Run as users
-[run services as users]
-
-### Reorganize files
-Discouraged. Some paths are hard-coded in multiple places and I don't feel like I want to enter this rabbit hole.
-
-Common paths are:  
-1. `/usr/share/klipper`
-2. `/usr/data/printer_data/config`
-3. `/usr/data/printer_data/gcodes`
-4. `/usr/data/printer_data/log`
-5. `/usr/data/creality/userdata/log`
-6. `/usr/data/creality/userdata/user_agree_root`
-
 ## Easter eggs
 
 `HUMBNAIL` - a typo which is _everywhere_. Not just init scripts. I mean directory names, macros, gcodes, _EVERYWHERE_.
+
+`COOLL_FAN` / `COLL_FAN` - silkscreen label for case fan
 
 Leftover bootlogo of Piocreat IPX2 in system version [1.2.3.21](https://github.com/Guilouz/Creality-Ender3-V3-Extracted-Firmwares/blob/main/Firmware/etc/boot-display/pic_00.jpg)
